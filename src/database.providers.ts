@@ -1,5 +1,4 @@
 import { DataSource } from 'typeorm';
-console.log(__dirname);
 
 export const databaseProviders = [
   {
@@ -19,3 +18,15 @@ export const databaseProviders = [
     },
   },
 ];
+
+export const dataSource = new DataSource({
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: 'docker',
+  database: 'postgres',
+  entities: ['./dist/**/courses/entities/*.js'],
+  migrations: ['./dist/migrations/*.js'],
+  synchronize: true,
+});
